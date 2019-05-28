@@ -28,7 +28,7 @@ public class GreetingController {
 
     @GetMapping
     public String main(Model model) {
-        String url = String.format("http://localhost/matomo/index.php?module=API&method=Live.getLastVisitsDetails&idSite=1&period=week&date=today&format=JSON&token_auth=%s", getApiKey());
+        String url = String.format("http://localhost/matomo/index.php?module=API&method=Live.getLastVisitsDetails&idSite=1&period=week&date=2019-05-05&format=JSON&token_auth=%s", getApiKey());
         Gson gson = new Gson();
         LastVisit[] lastVisits = gson.fromJson(Req(url), LastVisit[].class);
         model.addAttribute("lastVisits", new ArrayList<>(Arrays.asList(lastVisits)));
