@@ -13,6 +13,7 @@ public class Visitor {
     private int totalUniquePageViews;
     private int totalRevisitedPages;
     private int totalPageViewsWithTiming;
+    private long totalVisitDuration;
     private List<Search> searches;
     private int totalEvents;
     private List<LastVisits> lastVisits;
@@ -20,6 +21,10 @@ public class Visitor {
     private Visit firstVisit;
     private Visit lastVisit;
     private int visitsAggregated;
+    private String conduct;
+
+    public Visitor() {
+    }
 
     public void setVisitedPages(List<VisitedPage> visitedPages) {
         this.visitedPages = visitedPages;
@@ -165,5 +170,21 @@ public class Visitor {
 
     public void setVisitsAggregated(int visitsAggregated) {
         this.visitsAggregated = visitsAggregated;
+    }
+
+    public long getTotalVisitDuration() {
+        return totalVisitDuration;
+    }
+
+    public void setTotalVisitDuration(long totalVisitDuration) {
+        this.totalVisitDuration = totalVisitDuration;
+    }
+
+    public String getConduct() {
+        return conduct;
+    }
+
+    public void setConduct(String conduct) {
+        this.conduct = conduct;
     }
 }

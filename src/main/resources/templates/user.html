@@ -1,24 +1,87 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org" lang="ru">
 <head>
-    <title>Getting Started: Serving Web Content</title>
+    <title>Страница пользователя</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    <link th:href="@{/css/style.css}" rel="stylesheet">
+    <script th:src="@{//code.jquery.com/jquery-3.3.1.slim.min.js}"
             integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
             crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    <script th:src="@{//cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js}"
             integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
             crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    <script th:src="@{//stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js}"
             integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
             crossorigin="anonymous"></script>
 </head>
 <body>
-<h1>Профиль посетителья</h1>
-<p th:text="'ID: ' + ${visitor.getVisitorId()}"></p>
-<p th:text="'Провел в общей сложности ' + ${visitor.getTotalVisitDurationPretty()} + ' на веб-сайте и совершил ' + ${visitor.getTotalActions()} + ' действий (' + ${visitor.getTotalPageViews()} + ' Просмотры страниц,  ' + ${visitor.getTotalEvents()} + '  События, ' + ${visitor.getTotalDownloads()} + ' Загрузки, ' + ${visitor.getTotalOutlinks()} + ' Исходящие ссылки, ' + ${visitor.getTotalSearches()} + ' Поиски) за ' + ${visitor.getTotalVisits()} + ' посещений.'"></p>
+<div class="row">
+    <div class="col-xs-12 col-sm-9">
+        <h4 class="blue">
+            <span class="middle">Профиль посетителя</span>
+        </h4>
+
+        <div>
+            <div class="profile-info-row">
+                <div class="profile-info-name"> ID</div>
+
+                <div class="profile-info-value">
+                    <span th:text="${visitor.getVisitorId()}"></span>
+                </div>
+            </div>
+
+            <div class="profile-info-row">
+                <div class="profile-info-name"> Первый визит</div>
+
+                <div class="profile-info-value">
+                    <span th:text="${visitor.getFirstVisit().getPrettyDate()}"></span>
+                </div>
+            </div>
+
+            <div class="profile-info-row">
+                <div class="profile-info-name"> Последний визит</div>
+
+                <div class="profile-info-value">
+                    <span th:text="${visitor.getLastVisit().getPrettyDate()}"></span>
+                </div>
+            </div>
+
+            <div class="profile-info-row">
+                <div class="profile-info-name"> Всего визитов</div>
+
+                <div class="profile-info-value">
+                    <span th:text="${visitor.getTotalVisits()}"></span>
+                </div>
+            </div>
+
+            <div class="profile-info-row">
+                <div class="profile-info-name"> Всего действий</div>
+
+                <div class="profile-info-value">
+                    <span th:text="${visitor.getTotalActions()}"></span>
+                </div>
+            </div>
+
+            <div class="profile-info-row">
+                <div class="profile-info-name"> Общее время на сайте</div>
+
+                <div class="profile-info-value">
+                    <span th:text="${visitor.getTotalVisitDurationPretty()}"></span>
+                </div>
+            </div>
+
+            <div class="profile-info-row">
+                <div class="profile-info-name"> Поведение</div>
+
+                <div class="profile-info-value">
+                    <span th:text="${visitor.getConduct()}"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>

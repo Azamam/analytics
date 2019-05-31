@@ -23,15 +23,6 @@ public class LastVisit {
     private String daysSinceFirstVisit;
     private String visitDuration;
     private String visitDurationPretty;
-
-    public String getSearches() {
-        return searches;
-    }
-
-    public void setSearches(String searches) {
-        this.searches = searches;
-    }
-
     private String searches;
     private String actions;
     private String interactions;
@@ -70,6 +61,13 @@ public class LastVisit {
     private String visitLocalTime;
     private String visitLocalHour;
 
+    public String getSearches() {
+        return searches;
+    }
+
+    public void setSearches(String searches) {
+        this.searches = searches;
+    }
 
     public String getIdSite() {
         return idSite;
